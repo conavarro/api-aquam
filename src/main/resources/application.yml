@@ -5,12 +5,12 @@ server:
   error:
     path: /error
 
-spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/aquam
-    username: postgres
-    password: 40571187
-  jpa:
-    hibernate:
-      ddl-auto: none
-    show-sql: true
+#spring:
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/aquam
+#    username: postgres
+#    password: 40571187
+#  jpa:
+#    hibernate:
+#      ddl-auto: none
+#    show-sql: true
