@@ -3,6 +3,8 @@ package com.aquam.api.controllers;
 import com.aquam.api.entities.Reporte;
 import com.aquam.api.services.ReportesService;
 import org.apache.commons.lang3.time.DateUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +13,9 @@ import java.util.List;
 
 @RestController
 public class ReportesController {
+
+    private final Logger LOGGER = LoggerFactory.getLogger(getClass());
+
     private ReportesService reportesService;
 
     @Autowired
@@ -25,6 +30,7 @@ public class ReportesController {
 
     @GetMapping("/reports")
     public List<Reporte> getAllReporte(){
+        LOGGER.info(String.valueOf(new Date()));
         return this.reportesService.getAllReportes();
     }
 
