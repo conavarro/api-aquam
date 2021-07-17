@@ -11,7 +11,7 @@ public interface ReportesService {
 
     List<Reporte> getAllReportes();
 
-    Reporte createReporte(String latitud, String longitud, String barrio,
+    Reporte createReporte(float latitud, float longitud, String barrio,
                           String mail, String descripcion, Date fechaInicio, Date fechaFin,
                           int puntaje, String categoria);
 
