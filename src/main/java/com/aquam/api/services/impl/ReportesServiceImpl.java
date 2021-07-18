@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 @Service
 @Transactional
@@ -27,13 +28,8 @@ public class ReportesServiceImpl implements ReportesService {
     }
 
     @Override
-    public List<Reporte> getAllReportes(String mail) {
-        if (mail == null) {
-            return this.reportesRepository.getAllActiveReports(new Date());
-        } else {
-            return this.reportesRepository.getAllActiveReportsOfUser(mail, new Date());
-        }
-
+    public List<Reporte> getAllReportes(String mail, String barrio) {
+        return this.reportesRepository.getAllActiveReports(barrio, mail, new Date());
     }
 
     @Override

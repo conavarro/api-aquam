@@ -11,13 +11,11 @@ import java.util.List;
 public interface ReportesRepository extends JpaRepository<Reporte, Long> {
 
     @Query(value = "SELECT * FROM reportes " +
-            "WHERE :fechaActual BETWEEN fecha_inicio AND fecha_fin", nativeQuery = true)
-    List<Reporte> getAllActiveReports(@Param("fechaActual") Date fechaActual);
-
-    @Query(value = "SELECT * FROM reportes " +
-            "WHERE :mail = mail AND :fechaActual BETWEEN fecha_inicio AND fecha_fin", nativeQuery = true)
-    List<Reporte> getAllActiveReportsOfUser(@Param("mail") String mail,
-                                       @Param("fechaActual") Date fechaActual);
-
+            "WHERE :fechaActual BETWEEN fecha_inicio AND fecha_fin " +
+            "AND (:mail IS NULL OR upper(cast(:mail as varchar)) = upper(mail)) " +
+            "AND (:barrio IS NULL OR upper(cast(:barrio as varchar)) = upper(barrio))", nativeQuery = true)
+    List<Reporte> getAllActiveReports(@Param("barrio") String barrio,
+                                      @Param("mail") String mail,
+                                      @Param("fechaActual") Date fechaActual);
 
 }
