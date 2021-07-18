@@ -1,6 +1,7 @@
 package com.aquam.api.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -27,10 +28,14 @@ public class Reporte {
     private int puntaje;
     @Column(name = "categoria")
     private String categoria;
+
+    @JsonProperty(value = "fecha_inicio")
     @JsonFormat(shape = JsonFormat.Shape.STRING, locale = "es_AR",
             pattern = "yyyy-MM-dd HH:mm:ss.SSS", timezone = "America/Argentina/Buenos_Aires")
     @Column(name = "fecha_inicio")
     private Date fechaInicio;
+
+    @JsonProperty(value = "fecha_fin")
     @JsonFormat(shape = JsonFormat.Shape.STRING, locale = "es_AR",
             pattern = "yyyy-MM-dd HH:mm:ss.SSS", timezone = "America/Argentina/Buenos_Aires")
     @Column(name = "fecha_fin")

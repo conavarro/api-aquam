@@ -5,11 +5,13 @@ import com.aquam.api.repositories.ReportesRepository;
 import com.aquam.api.services.ReportesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
 
 @Service
+@Transactional
 public class ReportesServiceImpl implements ReportesService {
 
     private ReportesRepository reportesRepository;
