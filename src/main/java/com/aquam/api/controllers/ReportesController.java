@@ -29,8 +29,7 @@ public class ReportesController {
     }
 
     @GetMapping("/reports")
-    public List<Reporte> getAllReporte(){
-        LOGGER.info(String.valueOf(new Date()));
+    public List<Reporte> getAllReportes(){
         return this.reportesService.getAllReportes();
     }
 
