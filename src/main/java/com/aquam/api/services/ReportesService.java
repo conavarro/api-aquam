@@ -9,7 +9,7 @@ public interface ReportesService {
 
     Reporte getReporte(long id);
 
-    List<Reporte> getAllReportes();
+    List<Reporte> getAllReportes(String mail);
 
     Reporte createReporte(float latitud, float longitud, String barrio,
                           String mail, String descripcion, Date fechaInicio, Date fechaFin,

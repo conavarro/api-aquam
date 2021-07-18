@@ -27,8 +27,13 @@ public class ReportesServiceImpl implements ReportesService {
     }
 
     @Override
-    public List<Reporte> getAllReportes() {
-        return this.reportesRepository.getAllActiveReports(new Date());
+    public List<Reporte> getAllReportes(String mail) {
+        if (mail == null) {
+            return this.reportesRepository.getAllActiveReports(new Date());
+        } else {
+            return this.reportesRepository.getAllActiveReportsOfUser(mail, new Date());
+        }
+
     }
 
     @Override

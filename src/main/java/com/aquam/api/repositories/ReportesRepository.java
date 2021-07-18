@@ -16,7 +16,7 @@ public interface ReportesRepository extends JpaRepository<Reporte, Long> {
 
     @Query(value = "SELECT * FROM reportes " +
             "WHERE :mail = mail AND :fechaActual BETWEEN fecha_inicio AND fecha_fin", nativeQuery = true)
-    List<Reporte> getAllActiveReportsOfUser(@Param("mail") String email,
+    List<Reporte> getAllActiveReportsOfUser(@Param("mail") String mail,
                                        @Param("fechaActual") Date fechaActual);
 
 

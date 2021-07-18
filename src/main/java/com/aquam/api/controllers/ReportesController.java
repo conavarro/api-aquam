@@ -29,8 +29,9 @@ public class ReportesController {
     }
 
     @GetMapping("/reports")
-    public List<Reporte> getAllReportes(){
-        return this.reportesService.getAllReportes();
+    public List<Reporte> getAllReportes(@RequestParam(required = false, value = "mail")
+                                                    String mail){
+        return this.reportesService.getAllReportes(mail);
     }
 
     @PostMapping("/reports")
