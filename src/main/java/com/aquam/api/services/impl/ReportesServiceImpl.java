@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 @Service
 @Transactional
@@ -24,7 +23,14 @@ public class ReportesServiceImpl implements ReportesService {
 
     @Override
     public Reporte getReporte(long id) {
-        return reportesRepository.findById(id).orElseThrow();
+        return this.reportesRepository.findById(id).orElseThrow();
+    }
+
+    @Override
+    public Reporte deleteReporte(long id) {
+        Reporte reporte = getReporte(id);
+        this.reportesRepository.delete(reporte);
+        return reporte;
     }
 
     @Override

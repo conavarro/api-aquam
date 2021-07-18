@@ -43,4 +43,9 @@ public class ReportesController {
                 reporte.getBarrio(), reporte.getMail(), reporte.getDescripcion(),
                 fechaInicio, fechaFin, reporte.getPuntaje(), reporte.getCategoria());
     }
+
+    @DeleteMapping("/reports/{id}")
+    public Reporte deleteReporte(@PathVariable(value = "id") String id){
+        return this.reportesService.deleteReporte(Long.parseLong(id));
+    }
 }
