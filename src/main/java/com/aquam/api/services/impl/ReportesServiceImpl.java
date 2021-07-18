@@ -21,7 +21,7 @@ public class ReportesServiceImpl implements ReportesService {
 
     @Override
     public Reporte getReporte(long id) {
-        return this.reportesRepository.getOne(id);
+        return reportesRepository.findById(id).orElseThrow();
     }
 
     @Override

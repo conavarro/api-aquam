@@ -24,8 +24,8 @@ public class ReportesController {
     }
 
     @GetMapping("/reports/{id}")
-    public Reporte getReporte(@PathVariable(name = "id") long id){
-        return this.reportesService.getReporte(id);
+    public Reporte getReporte(@PathVariable(value = "id") String id){
+        return this.reportesService.getReporte(Long.parseLong(id));
     }
 
     @GetMapping("/reports")

@@ -13,4 +13,6 @@ public interface ReportesRepository extends JpaRepository<Reporte, Long> {
     @Query(value = "SELECT * FROM reportes " +
             "WHERE :fechaActual BETWEEN fecha_inicio AND fecha_fin", nativeQuery = true)
     List<Reporte> getAllActiveReports(@Param("fechaActual") Date fechaActual);
+
+
 }
