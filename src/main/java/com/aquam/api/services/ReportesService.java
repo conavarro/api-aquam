@@ -16,4 +16,6 @@ public interface ReportesService {
                           int puntaje, String categoria);
 
     Reporte deleteReporte(long id);
+
+    boolean isCritic(String barrio);
 }

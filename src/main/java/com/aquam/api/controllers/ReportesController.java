@@ -48,4 +48,9 @@ public class ReportesController {
     public Reporte deleteReporte(@PathVariable(value = "id") String id){
         return this.reportesService.deleteReporte(Long.parseLong(id));
     }
+
+    @GetMapping("/is-critic")
+    public boolean isCritic(@RequestParam(value = "barrio") String barrio){
+        return this.reportesService.isCritic(barrio);
+    }
 }

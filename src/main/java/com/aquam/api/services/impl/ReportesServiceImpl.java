@@ -33,6 +33,13 @@ public class ReportesServiceImpl implements ReportesService {
         return reporte;
     }
 
+//    @Override
+//    public Reporte deleteReporte(long id) {
+//        Reporte reporte = getReporte(id);
+//        this.reportesRepository.deleteReporte(id);
+//        return reporte;
+//    }
+
     @Override
     public List<Reporte> getAllReportes(String mail, String barrio) {
         return this.reportesRepository.getAllActiveReports(barrio, mail, new Date());
@@ -51,5 +58,13 @@ public class ReportesServiceImpl implements ReportesService {
         reporte.setMail(mail);
         reporte.setPuntaje(puntaje);
         return this.reportesRepository.save(reporte);
+    }
+
+    @Override
+    public boolean isCritic(String barrio) {
+        List<Reporte> reportesList = this.reportesRepository.getAllActiveReports(barrio,
+                null, new Date());
+        //TODO logica interna para definir si un barrio es critico o no
+        return false;
     }
 }

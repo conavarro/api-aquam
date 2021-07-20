@@ -18,4 +18,8 @@ public interface ReportesRepository extends JpaRepository<Reporte, Long> {
                                       @Param("mail") String mail,
                                       @Param("fechaActual") Date fechaActual);
 
+    @Query(value = "UPDATE reportes " +
+            "SET activado = false WHERE :id = id", nativeQuery = true)
+    Reporte deleteReporte(@Param("id") long id);
+
 }
