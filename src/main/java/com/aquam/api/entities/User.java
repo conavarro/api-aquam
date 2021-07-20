@@ -1,5 +1,7 @@
 package com.aquam.api.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +15,7 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    @JsonProperty(value = "username")
     @Column(name = "username")
     private String userName;
 
