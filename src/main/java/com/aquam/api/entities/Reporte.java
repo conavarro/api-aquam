@@ -43,6 +43,9 @@ public class Reporte {
     @Column(name = "fecha_fin")
     private Date fechaFin;
 
+    @Column(name = "image_url")
+    private String imageUrl;
+
     public Long getId() {
         return id;
     }
@@ -129,5 +132,13 @@ public class Reporte {
 
     public void setFechaFin(Date fechaFin) {
         this.fechaFin = fechaFin;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
