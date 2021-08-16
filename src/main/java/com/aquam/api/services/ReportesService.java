@@ -13,7 +13,7 @@ public interface ReportesService {
 
     Reporte createReporte(float latitud, float longitud, String barrio,
                           String mail, String descripcion, Date fechaInicio, Date fechaFin,
-                          int puntaje, String categoria, String direccion);
+                          int puntaje, String categoria, String direccion, String imageUrl);
 
     Reporte deleteReporte(long id);
 

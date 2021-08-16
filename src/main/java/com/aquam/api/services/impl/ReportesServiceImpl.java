@@ -46,7 +46,9 @@ public class ReportesServiceImpl implements ReportesService {
     }
 
     @Override
-    public Reporte createReporte(float latitud, float longitud, String barrio, String mail, String descripcion, Date fechaInicio, Date fechaFin, int puntaje, String categoria, String direccion) {
+    public Reporte createReporte(float latitud, float longitud, String barrio, String mail,
+                                 String descripcion, Date fechaInicio, Date fechaFin, int puntaje,
+                                 String categoria, String direccion, String imageUrl) {
         Reporte reporte = new Reporte();
         reporte.setBarrio(barrio);
         reporte.setCategoria(categoria);
@@ -58,6 +60,7 @@ public class ReportesServiceImpl implements ReportesService {
         reporte.setMail(mail);
         reporte.setPuntaje(puntaje);
         reporte.setDireccion(direccion);
+        reporte.setImageUrl(imageUrl);
         return this.reportesRepository.save(reporte);
     }
 
