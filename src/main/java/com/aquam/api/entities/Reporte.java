@@ -28,6 +28,8 @@ public class Reporte {
     private int puntaje;
     @Column(name = "categoria")
     private String categoria;
+    @Column(name = "direccion")
+    private String direccion;
 
     @JsonProperty(value = "fecha_inicio")
     @JsonFormat(shape = JsonFormat.Shape.STRING, locale = "es_AR",
@@ -103,6 +105,14 @@ public class Reporte {
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public Date getFechaInicio() {

@@ -44,7 +44,7 @@ public class ReportesController {
 
         return this.reportesService.createReporte(reporte.getLatitud(), reporte.getLongitud(),
                 reporte.getBarrio(), reporte.getMail(), reporte.getDescripcion(),
-                fechaInicio, fechaFin, reporte.getPuntaje(), reporte.getCategoria());
+                fechaInicio, fechaFin, reporte.getPuntaje(), reporte.getCategoria(), reporte.getDireccion());
     }
 
     @DeleteMapping("/reports/{id}")
