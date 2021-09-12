@@ -15,7 +15,7 @@ import java.util.List;
 public class ReportesServiceImpl implements ReportesService {
 
     private ReportesRepository reportesRepository;
-    private static final int minimaCantidadReportes = 10;
+    private static final int minimaCantidadReportes = 20;
 
     @Autowired
     public ReportesServiceImpl(ReportesRepository reportesRepository) {
