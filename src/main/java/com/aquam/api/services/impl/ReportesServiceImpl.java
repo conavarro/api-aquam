@@ -15,6 +15,7 @@ import java.util.List;
 public class ReportesServiceImpl implements ReportesService {
 
     private ReportesRepository reportesRepository;
+    private static final int minimaCantidadReportes = 10;
 
     @Autowired
     public ReportesServiceImpl(ReportesRepository reportesRepository) {
@@ -69,6 +70,6 @@ public class ReportesServiceImpl implements ReportesService {
         List<Reporte> reportesList = this.reportesRepository.getAllActiveReports(barrio,
                 null, new Date());
         //TODO logica interna para definir si un barrio es critico o no
-        return false;
+        return reportesList.size() > minimaCantidadReportes;
     }
 }
