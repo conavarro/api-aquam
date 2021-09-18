@@ -1,5 +1,6 @@
 package com.aquam.api.services.impl;
 
+import com.aquam.api.dtos.CantidadReportesPorCategoria;
 import com.aquam.api.entities.Reporte;
 import com.aquam.api.repositories.ReportesRepository;
 import com.aquam.api.services.ReportesService;
@@ -10,11 +11,13 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Date;
 import java.util.List;
 
+import static com.aquam.api.constants.Constantes.DESAGUE_TAPADO;
+
 @Service
 @Transactional
 public class ReportesServiceImpl implements ReportesService {
 
-    private ReportesRepository reportesRepository;
+    private final ReportesRepository reportesRepository;
     private static final int minimaCantidadReportes = 20;
 
     @Autowired
@@ -67,9 +70,15 @@ public class ReportesServiceImpl implements ReportesService {
 
     @Override
     public boolean isCritic(String barrio) {
-        List<Reporte> reportesList = this.reportesRepository.getAllActiveReports(barrio,
-                null, new Date());
-        //TODO logica interna para definir si un barrio es critico o no
-        return reportesList.size() > minimaCantidadReportes;
+        List<CantidadReportesPorCategoria> data = reportesRepository.getReportsByAllCategories(
+                barrio, null, new Date());
+        int cantidad = -1;
+        for (CantidadReportesPorCategoria r :
+                data) {
+            if (DESAGUE_TAPADO.equalsIgnoreCase(r.getCategoria())) {
+                cantidad = r.getCantidad();
+            }
+        }
+        return cantidad > minimaCantidadReportes;
     }
 }
