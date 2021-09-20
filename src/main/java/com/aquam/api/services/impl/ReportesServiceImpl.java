@@ -70,11 +70,10 @@ public class ReportesServiceImpl implements ReportesService {
 
     @Override
     public boolean isCritic(String barrio) {
-        List<CantidadReportesPorCategoria> data = reportesRepository.getReportsByAllCategories(
+        List<CantidadReportesPorCategoria> data = this.reportesRepository.getReportsByAllCategories(
                 barrio, null, new Date());
         int cantidad = -1;
-        for (CantidadReportesPorCategoria r :
-                data) {
+        for (CantidadReportesPorCategoria r : data) {
             if (DESAGUE_TAPADO.equalsIgnoreCase(r.getCategoria())) {
                 cantidad = r.getCantidad();
             }

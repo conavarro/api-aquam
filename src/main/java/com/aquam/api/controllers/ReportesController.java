@@ -54,7 +54,7 @@ public class ReportesController {
     }
 
     @GetMapping("/is-critic")
-    public boolean isCritic(@RequestParam(value = "barrio") String barrio){
+    public boolean isCritic(@RequestParam(required = false, value = "barrio") String barrio){
         return this.reportesService.isCritic(barrio);
     }
 }
