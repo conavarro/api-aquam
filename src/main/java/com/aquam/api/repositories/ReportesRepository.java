@@ -23,7 +23,7 @@ public interface ReportesRepository extends JpaRepository<Reporte, Long> {
             "SET activado = false WHERE :id = id", nativeQuery = true)
     Reporte deleteReporte(@Param("id") long id);
 
-    @Query(value = "SELECT COUNT(*) AS cantidad, categoria FROM reportes " +
+    @Query(value = "SELECT COUNT(*) AS cantidad, categoria, SUM(puntaje) AS puntaje FROM reportes " +
             "WHERE :fechaActual BETWEEN fecha_inicio AND fecha_fin " +
             "AND (:mail IS NULL OR upper(cast(:mail as varchar)) = upper(mail)) " +
             "AND (:barrio IS NULL OR upper(cast(:barrio as varchar)) = upper(barrio)) " +
