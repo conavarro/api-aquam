@@ -27,18 +27,18 @@ public class ReportesController {
     }
 
     @GetMapping("/reports/{id}")
-    public Reporte getReporte(@PathVariable(value = "id") String id){
+    public Reporte getReporte(@PathVariable(value = "id") String id) {
         return this.reportesService.getReporte(Long.parseLong(id));
     }
 
     @GetMapping("/reports")
     public List<Reporte> getAllReportes(@RequestParam(required = false, value = "mail") String mail,
-                                        @RequestParam(required = false, value = "barrio")  String barrio){
+                                        @RequestParam(required = false, value = "barrio") String barrio) {
         return this.reportesService.getAllReportes(mail, barrio);
     }
 
     @PostMapping("/reports")
-    public Reporte createReporte(@RequestBody Reporte reporte){
+    public Reporte createReporte(@RequestBody Reporte reporte) {
         Date fechaInicio = new Date();
         Date fechaFin = DateUtils.addDays(fechaInicio, 2);
 
@@ -49,12 +49,12 @@ public class ReportesController {
     }
 
     @DeleteMapping("/reports/{id}")
-    public Reporte deleteReporte(@PathVariable(value = "id") String id){
+    public Reporte deleteReporte(@PathVariable(value = "id") String id) {
         return this.reportesService.deleteReporte(Long.parseLong(id));
     }
 
     @GetMapping("/is-critic")
-    public boolean isCritic(@RequestParam(value = "barrio") String barrio){
+    public boolean isCritic(@RequestParam(required = false, value = "barrio") String barrio) {
         return this.reportesService.isCritic(barrio);
     }
 }
