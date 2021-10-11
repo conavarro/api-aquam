@@ -19,7 +19,7 @@ public class ReportesServiceImpl implements ReportesService {
 
     private final ReportesRepository reportesRepository;
     private static final int minimaCantidadReportes = 10;
-    private static final int minimoPromedioPuntaje = 7;
+    private static final int minimoPromedioPuntaje = 6;
 
     @Autowired
     public ReportesServiceImpl(ReportesRepository reportesRepository) {
@@ -87,6 +87,6 @@ public class ReportesServiceImpl implements ReportesService {
                 puntaje += r.getPuntaje();
             }
         }
-        return cantidad > minimaCantidadReportes && ((puntaje) / ((float) cantidad)) >= minimoPromedioPuntaje;
+        return cantidad >= minimaCantidadReportes && ((puntaje) / ((float) cantidad)) >= minimoPromedioPuntaje;
     }
 }
