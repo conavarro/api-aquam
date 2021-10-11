@@ -11,14 +11,15 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Date;
 import java.util.List;
 
-import static com.aquam.api.constants.Constantes.DESAGUE_TAPADO;
+import static com.aquam.api.constants.Constantes.*;
 
 @Service
 @Transactional
 public class ReportesServiceImpl implements ReportesService {
 
     private final ReportesRepository reportesRepository;
-    private static final int minimaCantidadReportes = 20;
+    private static final int minimaCantidadReportes = 10;
+    private static final int minimoPromedioPuntaje = 7;
 
     @Autowired
     public ReportesServiceImpl(ReportesRepository reportesRepository) {
@@ -72,12 +73,20 @@ public class ReportesServiceImpl implements ReportesService {
     public boolean isCritic(String barrio) {
         List<CantidadReportesPorCategoria> data = this.reportesRepository.getReportsByAllCategories(
                 barrio, null, new Date());
-        int cantidad = -1;
+        int cantidad = 0;
+        float puntaje = 0;
         for (CantidadReportesPorCategoria r : data) {
             if (DESAGUE_TAPADO.equalsIgnoreCase(r.getCategoria())) {
-                cantidad = r.getCantidad();
+                cantidad += r.getCantidad();
+                puntaje += r.getPuntaje() * 2;
+            } else if(TACHO_DESBORDADO.equalsIgnoreCase(r.getCategoria())){
+                cantidad += r.getCantidad();
+                puntaje += r.getPuntaje() * 1.5;
+            } else if (BASURA.equalsIgnoreCase(r.getCategoria())){
+                cantidad += r.getCantidad();
+                puntaje += r.getPuntaje();
             }
         }
-        return cantidad > minimaCantidadReportes;
+        return cantidad > minimaCantidadReportes && ((puntaje) / ((float) cantidad)) >= minimoPromedioPuntaje;
     }
 }
