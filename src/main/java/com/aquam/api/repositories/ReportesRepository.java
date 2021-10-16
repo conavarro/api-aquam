@@ -14,7 +14,8 @@ public interface ReportesRepository extends JpaRepository<Reporte, Long> {
     @Query(value = "SELECT * FROM reportes " +
             "WHERE :fechaActual BETWEEN fecha_inicio AND fecha_fin " +
             "AND (:mail IS NULL OR upper(cast(:mail as varchar)) = upper(mail)) " +
-            "AND (:barrio IS NULL OR upper(cast(:barrio as varchar)) = upper(barrio))", nativeQuery = true)
+            "AND (:barrio IS NULL OR upper(cast(:barrio as varchar)) = upper(barrio)) " +
+            "ORDER BY fecha_fin DESC", nativeQuery = true)
     List<Reporte> getAllActiveReports(@Param("barrio") String barrio,
                                       @Param("mail") String mail,
                                       @Param("fechaActual") Date fechaActual);
