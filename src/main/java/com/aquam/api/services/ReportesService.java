@@ -18,4 +18,6 @@ public interface ReportesService {
     Reporte deleteReporte(long id);
 
     boolean isCritic(String barrio);
+
+    Reporte updateLikes(long id);
 }

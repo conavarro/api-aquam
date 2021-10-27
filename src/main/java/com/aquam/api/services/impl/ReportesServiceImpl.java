@@ -89,4 +89,10 @@ public class ReportesServiceImpl implements ReportesService {
         }
         return cantidad >= minimaCantidadReportes && ((puntaje) / ((float) cantidad)) >= minimoPromedioPuntaje;
     }
+
+    @Override
+    public Reporte updateLikes(long id) {
+        this.reportesRepository.updateLike(id);
+        return this.reportesRepository.findById(id).orElse(new Reporte());
+    }
 }
