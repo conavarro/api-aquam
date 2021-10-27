@@ -57,4 +57,11 @@ public class ReportesController {
     public boolean isCritic(@RequestParam(required = false, value = "barrio") String barrio) {
         return this.reportesService.isCritic(barrio);
     }
+
+    @PutMapping("/reports/{id}")
+    public Reporte updateLikes(@PathVariable(value = "id") String id){
+        return this.reportesService.updateLikes(Long.parseLong(id));
+    }
+
+
 }
