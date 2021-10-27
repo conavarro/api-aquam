@@ -46,6 +46,9 @@ public class Reporte {
     @Column(name = "image_url")
     private String imageUrl;
 
+    @Column(name = "likes")
+    private int likes;
+
     public Long getId() {
         return id;
     }
@@ -140,5 +143,13 @@ public class Reporte {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
     }
 }
