@@ -37,4 +37,7 @@ public interface ReportesRepository extends JpaRepository<Reporte, Long> {
     @Modifying
     @Query(value = "UPDATE reportes SET likes = (likes + 1) WHERE id = :id", nativeQuery = true)
     void updateLike(@Param("id") long id);
+
+    @Query(value = "SELECT * FROM token", nativeQuery = true)
+    String getToken();
 }

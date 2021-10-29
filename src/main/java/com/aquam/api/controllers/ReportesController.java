@@ -63,5 +63,10 @@ public class ReportesController {
         return this.reportesService.updateLikes(Long.parseLong(id));
     }
 
+    @GetMapping("/token")
+    public String getToken(){
+        return this.reportesService.getToken();
+    }
+
 
 }

@@ -20,4 +20,6 @@ public interface ReportesService {
     boolean isCritic(String barrio);
 
     Reporte updateLikes(long id);
+
+    String getToken();
 }
