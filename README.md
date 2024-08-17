@@ -6,9 +6,6 @@
 
 -Se debe instalar Postgres de manera local y haber creado una base de datos
 -Luego se debe iniciar el codigo indicando un conjunto de variables de entorno de la siguiente forma:
-  
-![image](https://user-images.githubusercontent.com/44322821/139353193-322f5825-4f5c-4289-af21-e648f5543383.png)
-
 
 (En la imagen el nombre de la base de datos creada es 'aquam, el nombre de usuario de acceso a la base es 'cnavarro' y la contraseña es '40571187')
 
